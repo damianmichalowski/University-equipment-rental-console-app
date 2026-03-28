@@ -1,19 +1,21 @@
 namespace University_equipment_rental_console_app.Models;
 
-public class User
+public abstract class User
 {
-    public string Id { get; set; }   // np. "s29012", "e1234"
+    public int Id { get; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public UserType UserType { get; set; }
+    public UserType UserType { get; }
 
-    public User(string id, string firstName, string lastName, UserType userType)
+    protected User(int id, string firstName, string lastName, UserType userType)
     {
         Id = id;
         FirstName = firstName;
         LastName = lastName;
         UserType = userType;
     }
+
+    public abstract int GetRentalLimit();
 
     public override string ToString()
     {
