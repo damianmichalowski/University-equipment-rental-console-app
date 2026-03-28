@@ -2,7 +2,6 @@ namespace University_equipment_rental_console_app.Models;
 
 public abstract class Equipment
 {
-    private static int _nextId = 1;
 
     public int Id { get; }
     public string Name { get; set; }
@@ -13,9 +12,9 @@ public abstract class Equipment
 
     public EquipmentStatus Status { get; private set; }
 
-    protected Equipment(string name, string brand, string model, string serialNumber)
+    protected Equipment(int id, string name, string brand, string model, string serialNumber)
     {
-        Id = _nextId++;
+        Id = id;
         Name = name;
         Brand = brand;
         Model = model;
@@ -25,6 +24,9 @@ public abstract class Equipment
 
     public void MarkAsRented()
     {
+        if (Status != EquipmentStatus.Available)
+            throw new Exception("Equipment is not available");
+
         Status = EquipmentStatus.Rented;
     }
 
