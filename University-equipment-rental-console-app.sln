@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University-equipment-rental-console-app", "University-equipment-rental-console-app.csproj", "{E52B8992-4602-483C-9976-3C67603F5431}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E52B8992-4602-483C-9976-3C67603F5431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E52B8992-4602-483C-9976-3C67603F5431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E52B8992-4602-483C-9976-3C67603F5431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E52B8992-4602-483C-9976-3C67603F5431}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
