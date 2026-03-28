@@ -1,7 +1,7 @@
-namespace University_equipment_rental_console_app.Services;
 using University_equipment_rental_console_app.Data;
 using University_equipment_rental_console_app.Models;
 using University_equipment_rental_console_app.Models.Rentals;
+namespace University_equipment_rental_console_app.Services;
 
 public class Service
 {

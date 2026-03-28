@@ -1,22 +1,21 @@
 namespace University_equipment_rental_console_app.Services;
-using University_equipment_rental_console_app.Services;
 
 public class Report
 {
-    private readonly Service _Service;
+    private readonly Service _service;
 
     public Report(Service service)
     {
-        _Service = service;
+        _service = service;
     }
 
     public void PrintSummaryReport()
     {
-        var allEquipment = _Service.GetAllEquipment();
-        var availableEquipment = _Service.GetAvailableEquipment();
-        var activeRentals = _Service.GetActiveRentals();
-        var overdueRentals = _Service.GetOverdueRentals();
-        var totalPenalties = _Service.GetTotalPenalties();
+        var allEquipment = _service.GetAllEquipment();
+        var availableEquipment = _service.GetAvailableEquipment();
+        var activeRentals = _service.GetActiveRentals();
+        var overdueRentals = _service.GetOverdueRentals();
+        var totalPenalties = _service.GetTotalPenalties();
 
         Console.WriteLine("RAPORT KOŃCOWY");
         Console.WriteLine($"Wszystkie sprzęty: {allEquipment.Count}");
