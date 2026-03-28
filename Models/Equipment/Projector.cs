@@ -7,6 +7,7 @@ public class Projector : Equipment
     public bool HasHdmi { get; set; }
 
     public Projector(
+        int id,
         string name,
         string brand,
         string model,
@@ -14,7 +15,7 @@ public class Projector : Equipment
         string resolution,
         int brightnessLumens,
         bool hasHdmi
-    ) : base(name, brand, model, serialNumber)
+    ) : base(id, name, brand, model, serialNumber)
     {
         Resolution = resolution;
         BrightnessLumens = brightnessLumens;

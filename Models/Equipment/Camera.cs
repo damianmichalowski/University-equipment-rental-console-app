@@ -6,13 +6,14 @@ public class Camera : Equipment
     public bool HasVideo { get; set; }
 
     public Camera(
+        int id,
         string name,
         string brand,
         string model,
         string serialNumber,
         double resolutionMp,
         bool hasVideo
-    ) : base(name, brand, model, serialNumber)
+    ) : base(id, name, brand, model, serialNumber)
     {
         ResolutionMp = resolutionMp;
         HasVideo = hasVideo;

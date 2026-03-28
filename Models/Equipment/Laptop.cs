@@ -8,6 +8,7 @@ public class Laptop : Equipment
     public string Gpu { get; set; }
 
     public Laptop(
+        int id,
         string name,
         string brand,
         string model,
@@ -16,7 +17,7 @@ public class Laptop : Equipment
         int ramGb,
         int diskGb,
         string gpu
-    ) : base(name, brand, model, serialNumber)
+    ) : base(id, name, brand, model, serialNumber)
     {
         Processor = processor;
         RamGb = ramGb;
