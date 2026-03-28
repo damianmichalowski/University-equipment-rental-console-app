@@ -2,67 +2,67 @@
 
 
 List<Equipment> equipments = new List<Equipment>();
-List<User> users = new List<User>();
 
 equipments.Add(new Laptop(
-    1,
+    "Laptop do programowania",
     "Dell",
-    "Latitude 5420",
-    "SN123",
-    "i5",
+    "Latitude 5520",
+    "LAP001",
+    "Intel i5",
     16,
     512,
-    false
+    "nvidia"
 ));
 
 equipments.Add(new Projector(
-    2,
-    "Samsung",
-    "SP100",
-    "SN456",
+    "Projektor do sali A1",
+    "Epson",
+    "EB-X49",
+    "PROJ001",
     "Full HD",
     4000,
     true
 ));
 
 equipments.Add(new Camera(
-    3,
+    "Kamera do nagrań",
     "Canon",
     "EOS 250D",
-    "SN789",
+    "CAM001",
     24.1,
     true
 ));
 
-users.Add(new Student(
-    1,
-    "Jan",
-    "Kowalski",
-    "kowalski@gmail.com",
-    "123 456 789",
-    "s29844",
-    "informatyka",
-    3
-    
-));
-
-users.Add(new Employee(
-    2,
-    "Tom",
-    "Tomski",
-    "tomski@gmail.com",
-    "123 456 789",
-    "e39844",
-    "C# techer",
-    "Wydział Informatyki"
-    
-));
-foreach (var e in equipments)
+foreach (var equipment in equipments)
 {
-    Console.WriteLine(e);
+    Console.WriteLine(equipment);
 }
 
-foreach (var e in users)
-{
-    Console.WriteLine(e);
-}
+Laptop laptop = new Laptop(
+    "Laptop do programowania",
+    "Dell",
+    "Latitude 5520",
+    "LAP001",
+    "Intel i5",
+    16,
+    512,
+    "radeon"
+);
+
+Console.WriteLine(laptop);
+
+laptop.MarkAsRented();
+Console.WriteLine(laptop);
+
+laptop.MarkAsUnavailable();
+Console.WriteLine(laptop);
+
+laptop.MarkAsAvailable();
+Console.WriteLine(laptop);
+
+User student = new User("s29012", "Jan", "Kowalski", UserType.Student);
+User employee = new User("e1234", "Anna", "Nowak", UserType.Employee);
+
+
+Console.WriteLine(employee);
+Console.WriteLine(student);

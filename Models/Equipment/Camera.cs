@@ -6,13 +6,13 @@ public class Camera : Equipment
     public bool HasVideo { get; set; }
 
     public Camera(
-        int id,
+        string name,
         string brand,
         string model,
         string serialNumber,
         double resolutionMp,
         bool hasVideo
-    ) : base(id, brand, model, serialNumber)
+    ) : base(name, brand, model, serialNumber)
     {
         ResolutionMp = resolutionMp;
         HasVideo = hasVideo;
@@ -20,6 +20,7 @@ public class Camera : Equipment
 
     public override string ToString()
     {
-        return base.ToString() + $" | Resolution: {ResolutionMp}MP, Has Video: {HasVideo}";
+        return base.ToString() +
+               $" | Resolution: {ResolutionMp}MP, Video: {HasVideo}";
     }
 }

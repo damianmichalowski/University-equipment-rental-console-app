@@ -7,14 +7,14 @@ public class Projector : Equipment
     public bool HasHdmi { get; set; }
 
     public Projector(
-        int id,
+        string name,
         string brand,
         string model,
         string serialNumber,
         string resolution,
         int brightnessLumens,
         bool hasHdmi
-    ) : base(id, brand, model, serialNumber)
+    ) : base(name, brand, model, serialNumber)
     {
         Resolution = resolution;
         BrightnessLumens = brightnessLumens;
@@ -23,6 +23,7 @@ public class Projector : Equipment
 
     public override string ToString()
     {
-        return base.ToString() + $" | Resolution {Resolution}, {BrightnessLumens} lm, HDMI: {HasHdmi}";
+        return base.ToString() +
+               $" | Resolution: {Resolution}, Brightness: {BrightnessLumens} lm, HDMI: {HasHdmi}";
     }
 }
