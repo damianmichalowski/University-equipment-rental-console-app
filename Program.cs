@@ -2,6 +2,7 @@
 
 
 List<Equipment> equipments = new List<Equipment>();
+List<User> users = new List<User>();
 
 equipments.Add(new Laptop(
     1,
@@ -33,7 +34,35 @@ equipments.Add(new Camera(
     true
 ));
 
+users.Add(new Student(
+    1,
+    "Jan",
+    "Kowalski",
+    "kowalski@gmail.com",
+    "123 456 789",
+    "s29844",
+    "informatyka",
+    3
+    
+));
+
+users.Add(new Employee(
+    2,
+    "Tom",
+    "Tomski",
+    "tomski@gmail.com",
+    "123 456 789",
+    "e39844",
+    "C# techer",
+    "Wydział Informatyki"
+    
+));
 foreach (var e in equipments)
+{
+    Console.WriteLine(e);
+}
+
+foreach (var e in users)
 {
     Console.WriteLine(e);
 }
