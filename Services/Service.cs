@@ -36,51 +36,94 @@ public class Service
     
     public void MarkEquipmentAsUnavailable(int equipmentId)
     {
-        var equipment = _store.Equipments.FirstOrDefault(e => e.Id == equipmentId);
+        try
+        {
+            var equipment = _store.Equipments.FirstOrDefault(e => e.Id == equipmentId);
 
-        if (equipment == null)
-            throw new Exception("Equipment not found");
+            if (equipment == null)
+                throw new Exception("Equipment not found");
 
-        equipment.MarkAsUnavailable();
+            equipment.MarkAsUnavailable();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Cancled operation beacause: {ex.Message}");
+        }
     }
 
     public void RentEquipment(int userId, int equipmentId, int rentalDays, int rentalId)
     {
-        var user = _store.Users.FirstOrDefault(u => u.Id == userId);
-        var equipment = _store.Equipments.FirstOrDefault(e => e.Id == equipmentId);
+        try
+        {
+            var user = _store.Users.FirstOrDefault(u => u.Id == userId);
+            var equipment = _store.Equipments.FirstOrDefault(e => e.Id == equipmentId);
 
-        if (user == null)
-            throw new Exception("User not found");
+            if (user == null)
+                throw new Exception("User not found");
 
-        if (equipment == null)
-            throw new Exception("Equipment not found");
+            if (equipment == null)
+                throw new Exception("Equipment not found");
 
-        if (equipment.Status != EquipmentStatus.Available)
-            throw new Exception("Equipment is not available");
+            if (equipment.Status != EquipmentStatus.Available)
+                throw new Exception("Equipment is not available");
 
-        int activeRentals = _store.Rentals.Count(r => r.User.Id == userId && !r.IsReturned);
+            int activeRentals = _store.Rentals.Count(r => r.User.Id == userId && !r.IsReturned);
 
-        if (activeRentals >= user.GetRentalLimit())
-            throw new Exception("User reached rental limit");
-
-        var rental = new Rental(rentalId, user, equipment, DateTime.Now, rentalDays);
-
-        _store.Rentals.Add(rental);
-        equipment.MarkAsRented();
+            if (activeRentals >= user.GetRentalLimit())
+                throw new Exception("User reached rental limit");
+            
+            var rental = new Rental(rentalId, user, equipment, DateTime.Now, rentalDays);
+        
+            _store.Rentals.Add(rental);
+            equipment.MarkAsRented();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Cancled operation beacause: {ex.Message}");
+        }
     }
 
     public void ReturnEquipment(int rentalId)
     {
-        var rental = _store.Rentals.FirstOrDefault(r => r.Id == rentalId);
+        try
+        {
+            var rental = _store.Rentals.FirstOrDefault(r => r.Id == rentalId);
 
-        if (rental == null)
-            throw new Exception("Rental not found");
+            if (rental == null)
+                throw new Exception("Rental not found");
 
-        if (rental.IsReturned)
-            throw new Exception("Already returned");
+            if (rental.IsReturned)
+                throw new Exception("Already returned");
 
-        rental.ReturnEquipment(DateTime.Now);
-        rental.Equipment.MarkAsAvailable();
+            rental.ReturnEquipment(DateTime.Now);
+            rental.Equipment.MarkAsAvailable();
+        }
+        catch (Exception ex)
+        { 
+            Console.WriteLine($"Cancled operation beacause: {ex.Message}");
+        }
+    }
+    
+    public void ReturnEquipment(int userId, int equipmentId)
+    {
+        try
+        {
+            var rental = _store.Rentals
+                .FirstOrDefault(r =>
+                    r.User.Id == userId &&
+                    r.Equipment.Id == equipmentId &&
+                    !r.IsReturned);
+
+            if (rental == null)
+                throw new Exception("Active rental for given user and equipment not found");
+
+            rental.ReturnEquipment(DateTime.Now);
+            rental.Equipment.MarkAsAvailable();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Cancled operation beacause: {ex.Message}");
+        }
     }
 
     public List<Rental> GetActiveRentals()
